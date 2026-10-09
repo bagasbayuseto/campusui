@@ -1,0 +1,12 @@
+@media (max-width: 1200px) {
+  .topbar { grid-template-columns: 1fr minmax(220px, 1.2fr) auto; }
+}
+
+@media (max-width: 980px) {
+  .sidebar.collapsed { width: 0; }
+}
+
+@media (max-width: 620px) {
+  .shortcut-key { display: none; }
+  .profile-summary { display: none; }
+}

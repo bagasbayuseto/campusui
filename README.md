@@ -1,91 +1,273 @@
-# CampusUI
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusUI</title>
+    <meta name="description" content="CampusUI modern campus admin dashboard" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+    <link rel="stylesheet" href="./css/tables.css" />
+    <link rel="stylesheet" href="./css/forms.css" />
+    <link rel="stylesheet" href="./css/modals.css" />
+    <link rel="stylesheet" href="./css/dropdowns.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/toggles.css" />
+    <link rel="stylesheet" href="./css/semester.css" />
+    <link rel="stylesheet" href="./css/profile.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="stylesheet" href="./css/dark-mode.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <div class="brand-block">
+            <div class="brand-mark">C</div>
+            <div class="brand-label">CampusUI</div>
+          </div>
+          <button class="icon-btn desktop-menu" id="desktopSidebarToggle" type="button" aria-label="Toggle sidebar">
+            <i class="fa-solid fa-table-columns"></i>
+          </button>
+        </div>
 
-CampusUI adalah dashboard admin modern untuk sistem informasi akademik kampus yang dibuat dengan HTML5, CSS3, dan JavaScript murni. Aplikasi ini dirancang agar mudah dibuka melalui VS Code dengan Live Server dan dapat dikembangkan lebih lanjut ke Laravel 12 + MySQL.
+        <nav class="sidebar-nav" aria-label="Sidebar menu">
+          <button type="button" class="nav-item active" data-page="dashboard">
+            <span class="nav-icon"><i class="fa-solid fa-gauge-high"></i></span>
+            <span class="nav-label">Dashboard</span>
+          </button>
+          <button type="button" class="nav-item" data-page="mahasiswa">
+            <span class="nav-icon"><i class="fa-solid fa-user-graduate"></i></span>
+            <span class="nav-label">Mahasiswa</span>
+          </button>
+          <button type="button" class="nav-item" data-page="kelas">
+            <span class="nav-icon"><i class="fa-solid fa-chalkboard"></i></span>
+            <span class="nav-label">Kelas</span>
+          </button>
+          <button type="button" class="nav-item" data-page="semester">
+            <span class="nav-icon"><i class="fa-solid fa-calendar-days"></i></span>
+            <span class="nav-label">Semester</span>
+          </button>
+          <button type="button" class="nav-item" data-page="dosen">
+            <span class="nav-icon"><i class="fa-solid fa-chalkboard-user"></i></span>
+            <span class="nav-label">Dosen</span>
+          </button>
+          <button type="button" class="nav-item" data-page="laporan">
+            <span class="nav-icon"><i class="fa-solid fa-chart-column"></i></span>
+            <span class="nav-label">Laporan</span>
+          </button>
+          <button type="button" class="nav-item" data-page="pengaturan">
+            <span class="nav-icon"><i class="fa-solid fa-gear"></i></span>
+            <span class="nav-label">Pengaturan</span>
+          </button>
+          <button type="button" class="nav-item" data-page="bantuan">
+            <span class="nav-icon"><i class="fa-solid fa-circle-question"></i></span>
+            <span class="nav-label">Pusat Bantuan</span>
+          </button>
+        </nav>
 
-## Fitur utama
+        <div class="sidebar-footer">
+          <div class="status-pill"><span class="status-dot"></span><span>System Online</span></div>
+        </div>
+      </aside>
 
-- Dashboard akademik modern dengan card statistik dan grafik.
-- CRUD demo untuk mahasiswa, kelas, semester, dan dosen.
-- Sidebar responsif dengan mode mini dan mobile drawer.
-- Dark mode dan light mode dengan localStorage.
-- Search bar header dengan shortcut Ctrl + K.
-- Modal profiling, logout, tambah/edit/detail/hapus data.
-- Notifikasi toast, ekspor CSV, dan tabel interaktif.
+      <div class="content-shell">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="icon-btn mobile-toggle" id="mobileSidebarToggle" type="button" aria-label="Open sidebar">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="breadcrumb" id="breadcrumb">Dashboard</div>
+          </div>
 
-## Struktur folder
+          <div class="topbar-center">
+            <div class="header-search-wrap">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input id="headerSearchInput" type="search" placeholder="Cari menu, siswa, laporan..." aria-label="Search" />
+              <span class="shortcut-key">Ctrl + K</span>
+              <div class="search-results" id="headerSearchResults"></div>
+            </div>
+          </div>
 
-```text
-campusui/
-├── index.html
-├── README.md
-├── assets/
-│   └── images/
-│       └── campusui-logo.svg
-├── css/
-│   ├── style.css
-│   ├── layout.css
-│   ├── components.css
-│   ├── dashboard.css
-│   ├── tables.css
-│   ├── forms.css
-│   ├── modals.css
-│   ├── dropdowns.css
-│   ├── sidebar.css
-│   ├── toggles.css
-│   ├── semester.css
-│   ├── profile.css
-│   ├── responsive.css
-│   └── dark-mode.css
-└── js/
-    ├── app.js
-    ├── navigation.js
-    ├── sidebar.js
-    ├── ui-toggles.js
-    ├── theme.js
-    ├── search.js
-    ├── dashboard.js
-    ├── datatables.js
-    ├── mahasiswa.js
-    ├── kelas.js
-    ├── semester.js
-    ├── dosen.js
-    ├── modals.js
-    ├── profile-menu.js
-    ├── notifications.js
-    └── export.js
-```
+          <div class="topbar-right">
+            <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme">
+              <i class="fa-solid fa-moon"></i>
+            </button>
 
-## Cara menjalankan
+            <div class="notification-wrap">
+              <button class="icon-btn" id="notificationToggle" type="button" aria-label="View notifications">
+                <i class="fa-solid fa-bell"></i>
+                <span class="nav-badge">3</span>
+              </button>
+              <div class="dropdown-menu notification-dropdown" id="notificationDropdown">
+                <div class="dropdown-header">
+                  <strong>Notifikasi</strong>
+                  <a href="#">Tandai semua dibaca</a>
+                </div>
+                <div class="dropdown-item">
+                  <span class="dot dot-blue"></span>
+                  <div>
+                    <strong>Semester aktif diperbarui</strong>
+                    <small>2 menit lalu</small>
+                  </div>
+                </div>
+                <div class="dropdown-item">
+                  <span class="dot dot-amber"></span>
+                  <div>
+                    <strong>Mahasiswa baru ditambahkan</strong>
+                    <small>1 jam lalu</small>
+                  </div>
+                </div>
+                <div class="dropdown-item">
+                  <span class="dot dot-green"></span>
+                  <div>
+                    <strong>Laporan bulanan siap diunduh</strong>
+                    <small>Hari ini</small>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-1. Buka folder proyek di VS Code.
-2. Pastikan ekstensi Live Server sudah terinstall.
-3. Klik kanan `index.html` lalu pilih "Open with Live Server".
-4. Browser akan otomatis membuka halaman dashboard.
+            <button class="icon-btn" id="settingsQuickToggle" type="button" aria-label="Quick settings">
+              <i class="fa-solid fa-gear"></i>
+            </button>
 
-## Library eksternal yang digunakan
+            <div class="profile-wrap">
+              <button class="profile-trigger" id="profileToggle" type="button" aria-label="User profile menu">
+                <span class="avatar avatar-sm">SN</span>
+                <span class="profile-summary">
+                  <strong>Satnaing N.</strong>
+                  <small>Admin utama</small>
+                </span>
+              </button>
+              <div class="dropdown-menu profile-dropdown" id="profileDropdown">
+                <button class="dropdown-item profile-action" type="button" data-action="profile">
+                  <i class="fa-solid fa-user"></i> My Profil
+                </button>
+                <button class="dropdown-item profile-action" type="button" data-action="account-settings">
+                  <i class="fa-solid fa-user-gear"></i> Pengaturan Akun
+                </button>
+                <button class="dropdown-item profile-action" type="button" data-action="help">
+                  <i class="fa-solid fa-circle-question"></i> Bantuan
+                </button>
+                <button class="dropdown-item profile-action danger" type="button" data-action="logout">
+                  <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
 
-- Font Awesome 6 untuk ikon.
-- Google Fonts: Inter.
-- Chart.js untuk grafik dashboard.
-- Bootstrap 5 untuk komponen dasar standar.
-- DataTables jQuery untuk interaksi tabel (demo client-side).
+        <main class="main-content">
+          <section class="page-section active" id="dashboard-page"></section>
+          <section class="page-section" id="mahasiswa-page"></section>
+          <section class="page-section" id="kelas-page"></section>
+          <section class="page-section" id="semester-page"></section>
+          <section class="page-section" id="dosen-page"></section>
+          <section class="page-section" id="laporan-page"></section>
+          <section class="page-section" id="pengaturan-page"></section>
+          <section class="page-section" id="bantuan-page"></section>
+        </main>
 
-## Catatan penting
+        <footer class="footer">
+          <span>© 2026 CampusUI</span>
+          <span>Siap digunakan untuk sistem informasi akademik</span>
+        </footer>
+      </div>
+    </div>
 
-- Semua data demo disimpan di `localStorage` agar tetap ada saat browser di-refresh.
-- Fitur CRUD bersifat demo client-side dan belum terhubung ke backend.
-- Untuk produksi, sesuaikan dengan backend Laravel 12 dan MySQL menggunakan API, model, dan Yajra DataTables.
+    <div class="overlay" id="sidebarOverlay"></div>
 
-## Keterbatasan
+    <div class="modal" id="profileModal" aria-hidden="true">
+      <div class="modal-dialog profile-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Profil Admin</h3>
+            <button class="icon-btn close-modal" type="button" data-close="profileModal" aria-label="Close profile modal">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="profile-card">
+              <div class="avatar large">SN</div>
+              <div class="profile-meta">
+                <h4>Satnaing N.</h4>
+                <p>@satnaing</p>
+                <p>satnaing@campusui.ac.id</p>
+                <span class="badge badge-primary">Admin utama</span>
+              </div>
+            </div>
+            <div class="profile-actions-row">
+              <button class="btn btn-primary" id="editProfileBtn" type="button">Edit Profil</button>
+              <button class="btn btn-secondary close-modal" type="button" data-close="profileModal">Tutup</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-Aplikasi ini masih client-side dan bukan sistem autentikasi asli. Fungsionalitas login, logout, dan akses data hanya bersifat simulasi UI untuk demo.
+    <div class="modal" id="logoutModal" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Konfirmasi Logout</h3>
+            <button class="icon-btn close-modal" type="button" data-close="logoutModal" aria-label="Close logout modal">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Apakah Anda yakin ingin logout dari akun admin?</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary close-modal" type="button" data-close="logoutModal">Batal</button>
+            <button class="btn btn-danger" id="confirmLogoutBtn" type="button">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-## Kontribusi dan pengembangan lanjutan
+    <div class="modal" id="genericModal" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 id="genericModalTitle">Form</h3>
+            <button class="icon-btn close-modal" type="button" data-close="genericModal" aria-label="Close generic modal">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body scrollable-panel" id="genericModalBody"></div>
+          <div class="modal-footer" id="genericModalFooter"></div>
+        </div>
+      </div>
+    </div>
 
-Untuk versi produksi, integrasikan:
+    <div id="toastContainer" class="toast-container"></div>
 
-- API Laravel 12 untuk mahasiswa, kelas, semester, dan dosen.
-- Database MySQL dan migrasi.
-- Autentikasi admin menggunakan Laravel Breeze atau Jetstream.
-- Server-side DataTables dengan Yajra.
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.12.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.11/js/jquery.dataTables.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/navigation.js"></script>
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/ui-toggles.js"></script>
+    <script src="./js/theme.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/dashboard.js"></script>
+    <script src="./js/datatables.js"></script>
+    <script src="./js/mahasiswa.js"></script>
+    <script src="./js/kelas.js"></script>
+    <script src="./js/semester.js"></script>
+    <script src="./js/dosen.js"></script>
+    <script src="./js/modals.js"></script>
+    <script src="./js/profile-menu.js"></script>
+    <script src="./js/notifications.js"></script>
+    <script src="./js/export.js"></script>
+  </body>
+</html>

@@ -1,14 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
-  <defs>
-    <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="100%">
-      <stop offset="0%" stop-color="#1d4ed8" />
-      <stop offset="100%" stop-color="#3b82f6" />
-    </linearGradient>
-  </defs>
-  <rect width="200" height="200" rx="40" fill="#eef4ff" />
-  <path d="M35 140 L65 90 L90 116 L120 70 L165 140 Z" fill="url(#g1)" opacity="0.9"/>
-  <rect x="58" y="52" width="86" height="16" rx="8" fill="#0f172a" opacity="0.9"/>
-  <rect x="42" y="142" width="116" height="14" rx="7" fill="#0f172a" opacity="0.9"/>
-  <circle cx="68" cy="82" r="12" fill="#ffffff" opacity="0.9"/>
-  <circle cx="118" cy="96" r="12" fill="#ffffff" opacity="0.8"/>
-</svg>
+# CampusUI
+
+CampusUI adalah dashboard admin modern untuk sistem informasi akademik kampus. Project ini dibuat dengan HTML5, CSS3, dan JavaScript murni, tanpa framework frontend. Tujuan utama adalah menyediakan template dashboard yang bisa langsung dijalankan dan dikembangkan menjadi aplikasi akademik.
+
+## Struktur folder
+
+```text
+campusui/
+├── index.html
+├── README.md
+├── assets/
+│   └── images/
+│       └── campusui-logo.svg
+├── css/
+│   ├── style.css
+│   ├── layout.css
+│   ├── components.css
+│   ├── dashboard.css
+│   ├── tables.css
+│   ├── forms.css
+│   ├── modals.css
+│   ├── dropdowns.css
+│   ├── sidebar.css
+│   ├── toggles.css
+│   ├── semester.css
+│   ├── profile.css
+│   ├── responsive.css
+│   └── dark-mode.css
+└── js/
+    ├── app.js
+    ├── navigation.js
+    ├── sidebar.js
+    ├── ui-toggles.js
+    ├── theme.js
+    ├── search.js
+    ├── dashboard.js
+    ├── datatables.js
+    ├── mahasiswa.js
+    ├── kelas.js
+    ├── semester.js
+    ├── dosen.js
+    ├── modals.js
+    ├── profile-menu.js
+    ├── notifications.js
+    └── export.js
+```
+
+## Cara menjalankan
+
+1. Buka folder project di VS Code.
+2. Pastikan extension Live Server sudah terinstall.
+3. Klik kanan `index.html` lalu pilih `Open with Live Server`.
+4. Browser akan otomatis membuka aplikasi.
+
+## Library yang dipakai
+
+- Font Awesome 6
+- Bootstrap 5
+- Google Fonts: Inter
+- Chart.js
+- jQuery + DataTables
+
+## Fitur utama
+
+- Sidebar responsif
+- Header dengan search dan shortcut Ctrl + K
+- Dark mode / light mode
+- Dashboard dengan metric cards dan chart
+- CRUD demo mahasiswa, kelas, semester, dosen
+- Modal tambah, edit, detail, hapus
+- Notifikasi toast
+- Ekspor CSV
+- localStorage untuk theme dan data demo
+
+## Catatan penting
+
+Project ini adalah frontend demo untuk kebutuhan UI dan interaksi. Data demo disimpan di localStorage. Untuk produksi, hubungkan ke Laravel 12 + MySQL dan API backend.

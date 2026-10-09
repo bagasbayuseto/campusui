@@ -1,0 +1,24 @@
+.profile-panel { display: flex; flex-direction: column; gap: 16px; }
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+.profile-detail {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 14px;
+}
+.meta-box {
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background: var(--hover-color);
+  padding: 0.8rem 0.9rem;
+}
+.meta-box label {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+}
+.meta-box strong { font-size: 1rem; }
